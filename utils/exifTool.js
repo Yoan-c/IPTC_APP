@@ -3,6 +3,9 @@ const exiftool = require("exiftool-vendored").exiftool;
 
 exports.updateDescriptionPicture = (img, Description) => {
   return new Promise((resolve, reject) => {
+    if (Description === " ") {
+      return resolve("success");
+    }
     exiftool
       .write(`${__dirname}/../data/${img}`, {
         Description,
