@@ -19,11 +19,13 @@ const updateMetaData = (img, desc) => {
 };
 
 const getMetaData = (img) => {
-  console.log(`${URL}/${img}`);
+  console.log(`${URL}`);
   fetch(`${URL}/`, {
     method: "get",
   })
     .then((res) => res.json())
-    .then((res) => createListImg(res))
+    .then((res) => {
+      createListImg(res);
+    })
     .catch((err) => console.log(err));
 };
