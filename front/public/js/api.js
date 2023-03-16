@@ -29,3 +29,13 @@ const getMetaData = (img) => {
     })
     .catch((err) => console.log(err));
 };
+
+const deleteMetaData = (img) => {
+  console.log(`${URL}/${img}`);
+  fetch(`${URL}/${img}`, {
+    method: "DELETE",
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
+};
