@@ -20,23 +20,29 @@ exports.updateDescriptionPicture = (img, Description) => {
 };
 
 exports.readDescriptionPicture = (img) => {
-  exiftool
-    .read(`${__dirname}/../data/${img}`)
-    .then((tags) => console.log(tags.Description))
-    .catch((err) => console.error("Une erreur est survenu: ", err));
+  return new Promise((resolve, reject) => {
+    exiftool
+      .read(`${__dirname}/../data/${img}`)
+      .then((tags) => resolve(tags.Description))
+      .catch((err) => reject("Une erreur est survenu: ", err));
+  });
 };
 
 exports.deleteDescriptionPicture = (img) => {
   return new Promise((resolve, reject) => {
-    exiftool
-      .write(`${__dirname}/../data/${img}`, {
-        Description: "",
-      })
-      .then((res) => {
-        unlink(`${__dirname}/../data/${img}_original`)
-          .then((data) => resolve(data))
+    exiftool.read(`${__dirname}/../data/${img}`).then((tags) => {
+      if (tags.Description) {
+        exiftool
+          .write(`${__dirname}/../data/${img}`, {
+            Description: null,
+          })
+          .then((res) => {
+            unlink(`${__dirname}/../data/${img}_original`)
+              .then((data) => resolve("success"))
+              .catch((err) => reject(err));
+          })
           .catch((err) => reject(err));
-      })
-      .catch((err) => reject(err));
+      } else resolve("success");
+    });
   });
 };
