@@ -11,10 +11,7 @@ const updateMetaData = (img, desc) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+  }).catch((err) => console.log(err));
 };
 
 const getMetaData = (img) => {
@@ -31,8 +28,5 @@ const getMetaData = (img) => {
 const deleteMetaData = (img) => {
   fetch(`${URL}/${img}`, {
     method: "DELETE",
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+  }).catch((err) => console.log(err));
 };
