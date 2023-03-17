@@ -4,7 +4,7 @@
   "description": "Application de changement de la meta description d'une photo",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "node server.js",
     "test" : "jest "
   },
   "author": "Yoan",
