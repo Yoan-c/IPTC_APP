@@ -5,7 +5,6 @@ const updateMetaData = (img, desc) => {
     description: desc ? desc : " ",
   };
 
-  console.log(`${URL}/${img} data : ${data}`);
   fetch(`${URL}/${img}`, {
     method: "PATCH",
     headers: {
@@ -19,7 +18,6 @@ const updateMetaData = (img, desc) => {
 };
 
 const getMetaData = (img) => {
-  console.log(`${URL}`);
   fetch(`${URL}/`, {
     method: "get",
   })
@@ -31,7 +29,6 @@ const getMetaData = (img) => {
 };
 
 const deleteMetaData = (img) => {
-  console.log(`${URL}/${img}`);
   fetch(`${URL}/${img}`, {
     method: "DELETE",
   })

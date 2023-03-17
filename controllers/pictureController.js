@@ -52,7 +52,6 @@ exports.patchPictureMeta = (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
       return resError.errorSend(
         res,
         500,
@@ -72,7 +71,6 @@ exports.deletePictureMeta = (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
       return resError.errorSend(
         res,
         500,
