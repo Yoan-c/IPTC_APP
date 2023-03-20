@@ -1,0 +1,13 @@
+version: '2.15'
+services:
+  back:
+   image : back
+   ports : 
+    - 3000:3000
+
+  front : 
+    image : front
+    volumes : 
+      - "${PWD}/../iptc-web-editor/data/images:/usr/local/apache2/htdocs/images"
+    ports :
+      - 8080:80

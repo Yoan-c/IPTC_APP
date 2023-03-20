@@ -1,4 +1,4 @@
-const URL = "http://127.0.0.1:3000";
+const URL = "http://localhost:3000";
 
 const updateMetaData = (img, desc) => {
   const data = {
@@ -11,7 +11,10 @@ const updateMetaData = (img, desc) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
-  }).catch((err) => console.log(err));
+  })
+    .then((res) => res.json())
+    .then((_) => alert("La description a bien été modifié"))
+    .catch((err) => console.log(err));
 };
 
 const getMetaData = (img) => {
@@ -28,5 +31,8 @@ const getMetaData = (img) => {
 const deleteMetaData = (img) => {
   fetch(`${URL}/${img}`, {
     method: "DELETE",
-  }).catch((err) => console.log(err));
+  })
+    .then((res) => res.json())
+    .then((_) => alert("La description a bien été supprimé"))
+    .catch((err) => console.log(err));
 };
